@@ -168,7 +168,7 @@ def Main():
 
             # Update compiler.runtime for Visual Studio
             # Append 'd' to compiler.runtime for Visual Studio debug builds.
-            if entry_settings.get('compiler', '') == 'Visual Studio' 
+            if entry_settings.get('compiler', '') == 'Visual Studio':
                 runtime = 'MT' if compiler_name == 'msvc_mt' else 'MD'
                 debug_suffix = 'd' if build_name == 'debug' else ''
                 runtime_value = f'{runtime}{debug_suffix}'
