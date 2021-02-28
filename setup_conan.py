@@ -166,6 +166,14 @@ def Main():
             entry_settings = entry.get('settings', {})
             entry_env = entry.get('env', {})
 
+            # Update compiler.runtime for Visual Studio
+            # Append 'd' to compiler.runtime for Visual Studio debug builds.
+            if entry_settings.get('compiler', '') == 'Visual Studio' 
+                runtime = 'MT' if compiler_name == 'msvc_mt' else 'MD'
+                debug_suffix = 'd' if build_name == 'debug' else ''
+                runtime_value = f'{runtime}{debug_suffix}'
+                entry_settings['compiler.runtime'] = runtime_value
+
             profile_settings.update(entry_settings)
             profile_env.update(entry_env)
 
